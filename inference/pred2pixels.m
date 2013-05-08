@@ -1,0 +1,9 @@
+function [pts,boxes] = pred2pixels(pred,scale,padx,pady,fdims);
+predx = pred(1,:);
+predy = pred(2,:);
+x1  = (predx - 1 - padx)*scale+1;
+y1  = (predy - 1 - pady)*scale+1;
+x2  = x1 + fdims(2)*scale - 1;
+y2  = y1 + fdims(1)*scale - 1;
+boxes = [x1' y1' x2' y2'];
+pts = boxcenter(boxes);
