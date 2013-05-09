@@ -2,7 +2,9 @@ MODEC
 =========
 
 Multimodal Decomposable Model for Human Pose Estimation
+
 Ben Sapp and Ben Taskar, CVPR 2013 
+
 http://www.seas.upenn.edu/~bensapp/cvpr13-modec.pdf
 
       @inproceedings{modec13,
