@@ -22,7 +22,6 @@ interactive_visualization = false; % Enable browsing the results
 enable_bigq = true; % enables context poselets
 
 if faster_detection
-    disp('Warning: Using parameters optimized for speed over accuracy');
     config.DETECTION_IMG_MIN_NUM_PIX = 240^2;  % if the number of pixels in a detection image is < DETECTION_IMG_SIDE^2, scales up the image to meet that threshold
     config.DETECTION_IMG_MAX_NUM_PIX = 640^2;  
     config.PYRAMID_SCALE_RATIO = 2;

@@ -10,7 +10,7 @@ else
 end
 
 if 0
-    %% 
+    %% NOTE:
     % for pixel-precise replication of paper results, there is an extra
     % needless jpeg compression step at this point (barely changes anything).
     imwrite(imgc,'tmp.jpg');

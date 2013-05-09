@@ -5,7 +5,8 @@ testex = examples([examples.istest]);
 ntest = length(testex);
 model = loadvar('MODEC-model.mat','mdls');
 
-%% run MODEC over every test example, saving wrist, elbow and shoulder locations
+%% Run MODEC over every test example, saving wrist, elbow and shoulder locations.
+% Takes 15-20 minutes.  Parallelizing is trivial.
 pred_coords = nan(2,6,ntest);
 for i=1:ntest
     tstart = clock;
@@ -14,20 +15,23 @@ for i=1:ntest
     pred_coords(:,:,i) = pred_i.coords;
     fprintf('example %d / %d took %s\n',i,ntest,sec2timestr(etime(clock,tstart)));
 end
-save results.mat pred_coords
 %% evaluate
-load results.mat pred_coords
 gt_coords = cat(3,testex.coords);
 
+% error measure described in paper:
 scale_by_parts = {'lsho','rhip'};
 elbow_err = score_predictions(pred_coords, gt_coords, {'lelb','relb'}, scale_by_parts);
 wrist_err = score_predictions(pred_coords, gt_coords, {'lwri','rwri'}, scale_by_parts);
 
-%display 
+% curves should match "MODEC+cascade" curves in Figure 4 of the paper.
 clf
 range = 1:20;
-accuracyCurve(elbow_err(:),range,'b-','linewidth',3);
+[~, elbow_auc] = accuracyCurve(elbow_err(:),range,'b-','linewidth',3)
 hold on
-accuracyCurve(wrist_err(:),range,'g-','linewidth',3);
+[~, wrist_auc] = accuracyCurve(wrist_err(:),range,'g-','linewidth',3)
 axis square, grid on
 axis([range([1 end]) 1 100])
+
+%% validate to ensure you get official results:
+assert(abs(elbow_auc - 46.93846) < 1e-5)
+assert(abs(wrist_auc - 35.15075) < 1e-5)

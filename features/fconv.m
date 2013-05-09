@@ -1,5 +1,6 @@
 function response = fconv(varargin)
-if usejava('desktop') % heuristic for not running multicore parallelization for learning
+global do_multithread_fconv;
+if do_multithread_fconv
     response = fconv_multithread(varargin{:});
 else
     response = fconv_singlethread(varargin{:});

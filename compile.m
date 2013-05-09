@@ -6,7 +6,7 @@ mex -O inference/dt.cc -o inference/dt
 mex -O boxutil/mex_all_pairs_box_IoU.cpp -o boxutil/mex_all_pairs_box_IoU
 mex -O util/mex_shiftmat.cpp -o util/mex_shiftmat
 mex -O util/mex_subarray.cpp -o util/mex_subarray
-mex -O poselets-lite/mex_poselet_dists_fast.cpp -o poselets-lite/mex_poselet_dists_fast.cpp
+mex -O poselets-lite/mex_poselet_dists_fast.cpp -o poselets-lite/mex_poselet_dists_fast
 
 % use one of the following depending on your setup
 % 1 is fastest, 3 is slowest

@@ -32,6 +32,7 @@ void mexFunction(int nlhs, mxArray *out[], int nrhs, const mxArray *in[])
             ty = y+y1;
             if (tx >= w || ty >= h || tx < 0 || ty < 0)
                 continue;
+            // Remove the early continue to do intelligent padding:
             tx = tx < w ? tx : w-1;
             ty = ty < h ? ty : h-1;
             tx = tx >= 0 ? tx : 0;
