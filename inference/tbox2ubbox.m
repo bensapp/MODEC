@@ -1,4 +1,4 @@
-function box = tbox2ubbox(tbox)
+function [box, scale, bdims, ctr] = tbox2ubbox(tbox)
 ctr = [mean(tbox([1 3])); tbox(2)];
 width = abs(diff(tbox([1 3])));
 width = width*1.4;

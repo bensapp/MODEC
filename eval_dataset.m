@@ -33,5 +33,5 @@ axis square, grid on
 axis([range([1 end]) 1 100])
 legend({'MODEC+cascade elbow acc', 'MODEC+cascade wrist acc'})
 %% validate to ensure you get official results:
-assert(abs(elbow_auc - 46.93846) < 1e-5)
-assert(abs(wrist_auc - 35.15075) < 1e-5)
+assert(abs(elbow_auc - 47.33993) < 1e-5)
+assert(abs(wrist_auc - 35.36703) < 1e-5)
