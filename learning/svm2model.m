@@ -19,7 +19,7 @@ end
 wroot = w(hog_full_start:hog_full_start+prod(fdims_full)-1);
 filter_root = reshape(wroot,fdims_full);
 
-min_coeff = 0.01;
+min_coeff = 0.001;
 for i=1:nparts-1
     geom = w((i-1)*ngeom+geom_start:i*ngeom+geom_start-1);
     model(i+1).coeff_dx2 = max(min_coeff,geom(1));
